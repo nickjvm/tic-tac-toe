@@ -18,6 +18,11 @@ body {
   border-collapse:collapse;
   width:300px;
   height:302px;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  -o-user-select:none;
+  user-select:none;
 }
 
 #board td {
