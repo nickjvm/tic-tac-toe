@@ -6,6 +6,7 @@ html{
 	height: 100%;
 }
 body {
+	background:#FAFAFA;
 	min-height: 100%;
 	height:100%;
 	font:13px "Helvetica neue", Helvetica,sans-serif;
@@ -15,15 +16,16 @@ body {
 }
 
 #board {
-  border-collapse:collapse;
-  width:300px;
-  height:302px;
-  -webkit-user-select:none;
-  -moz-user-select:none;
-  -ms-user-select:none;
-  -o-user-select:none;
-  user-select:none;
-  transition:transform .2s;
+	background:#FFFFFF;
+	border-collapse:collapse;
+	width:300px;
+	height:302px;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none;
+	-o-user-select:none;
+	user-select:none;
+	transition:transform .2s;
 }
 #board.resetting {
 	transform:scale(0);
@@ -56,6 +58,7 @@ body {
 }
 
 .stats {
+	background:#FFFFFF;
 	text-align:center;
 	margin:auto;
 	width:300px;
@@ -65,6 +68,9 @@ body {
 	border:1px solid #CCC;
 }
 
+.stats li.wohoo {
+	transform:scale(3);
+}
 .stats ul {
 	list-style-type:none;
 	margin:0;
@@ -76,6 +82,8 @@ body {
 	display:inline-block;
 	font-size:14px;
 	width:33%;
+	transform:scale(1);
+	transition:transform .7s;
 }
 
 .container {

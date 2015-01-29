@@ -60,13 +60,16 @@
 		self.handleWin = function() {
 			var character = self._getChar();
 
-			alert(character + " wins!");
+			//alert(character + " wins!");
+			$("." + character).addClass("wohoo");
 			self[character]++
-			self.reset();
+			//self.reset();
 		};
 
 		self.handleTie = function() {
-			alert("no one wins :(");
+			//alert("no one wins :(");
+			$(".tie").addClass("wohoo");
+
 			self.Tie++;
 			self.reset();
 		};
@@ -126,8 +129,6 @@
 				["" ,"" ,"" ]
 			];
 
-			$("#board").addClass("resetting");
-
 			self.updateStats();
 		};
 
@@ -161,4 +162,12 @@ $(document).ready(function() {
 				TicTacToe.Game._buildBoard();
 			}
 		});
+	$(".stats li").on("webkitTransitionEnd transitionend msTransitionEnd oTransitionEnd",function(e) {
+		if(!$(e.target).is(".wohoo")) {
+			$("#board").addClass("resetting");
+			TicTacToe.Game.reset();
+		}
+		$(this).removeClass("wohoo");
+
+	})
 });
