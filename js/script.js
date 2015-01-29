@@ -26,6 +26,9 @@
 		self.Tie = 0;
 
 		self.handleClick = function(e) {
+			if(self.gameOver) {
+				return;
+			}
 			var character = self._getChar();
 			var $target = $(e.target),
 				data = $target.data(),
@@ -58,8 +61,8 @@
 		};
 
 		self.handleWin = function() {
+			self.gameOver = true;
 			var character = self._getChar();
-
 			//alert(character + " wins!");
 			$("." + character).addClass("wohoo");
 			self[character]++
@@ -67,9 +70,9 @@
 		};
 
 		self.handleTie = function() {
+			self.gameOver = true;
 			//alert("no one wins :(");
 			$(".tie").addClass("wohoo");
-
 			self.Tie++;
 			self.reset();
 		};
@@ -122,7 +125,7 @@
 
 		self.reset = function() {
 			self.playCount = 0;
-
+			self.gameOver = false;
 			self.board = [
 				["", "" ,"" ],
 				["" ,"" ,"" ],
