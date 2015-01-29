@@ -95,3 +95,51 @@ body {
 	margin-left:-150px;
 	transform:translateY(-50%);
 }
+
+.turns {
+  list-style-type: none;
+  margin: 0 0 10px 0;
+  padding: 0;
+  width: 300px;
+  font-size: 0;
+  position: relative;
+  cursor:default;
+}
+
+.turns:before {
+  content: "";
+  background: #e6e6e6;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 2%;
+  width:46%;
+  z-index: -1;
+  border-radius: 3px;
+  background:#FF9700;
+  opacity:.6;
+  transition:all .5s;
+
+}
+.turns.player-X:before {
+	left:52%;
+	background:#12AB9A;
+}
+.turns.player-X li:first-child {
+	color:#FF9700;
+}
+.turns.player-X li:last-child {
+	color:#FFF;
+}
+.turns li {
+	color:#FFF;
+	padding: 5px 10px;
+	text-align: center;
+	font-size: 15px;
+	display: inline-block;
+	width: 50%;
+	transition:color .5s;
+}
+.turns li:last-child {
+	color:#12AB9A;
+}

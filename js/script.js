@@ -79,6 +79,7 @@
 
 		self.nextPlay = function() {
 			self.playCount++;
+			$(".turns").toggleClass("player-X");
 		};
 
 		self.isWinner = function() {
@@ -139,6 +140,7 @@
 			$(".x-count").text(self.X);
 			$(".o-count").text(self.O);
 			$(".tie-count").text(self.Tie);
+			$(".turns").removeClass("player-X");
 		};
 
 	    self.init = function() {
