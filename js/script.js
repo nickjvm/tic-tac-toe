@@ -17,6 +17,7 @@
 				}
 				$container.append($row);
 			}
+			$container.removeClass("resetting");
 		};
 
 		//Setup Stats
@@ -31,12 +32,13 @@
 				x = data.x,
 				y = data.y,
 				point = self.board[y][x];
-
-			if(point == "") {
-				//clicked td is empty, go ahead and assign it a character.
-				self.board[y][x] = character;
-				$target.text(character).addClass(character);
+			if(point != "") {
+				return;
 			}
+			//clicked td is empty, go ahead and assign it a character.
+			self.board[y][x] = character;
+			$target.text(character).addClass(character);
+
 			if(self.playCount < 4) {
 				//Not possible to have a winner yet, keep playing!
 				return self.nextPlay();
@@ -117,13 +119,16 @@
 
 		self.reset = function() {
 			self.playCount = 0;
+
 			self.board = [
 				["", "" ,"" ],
 				["" ,"" ,"" ],
 				["" ,"" ,"" ]
 			];
+
+			$("#board").addClass("resetting");
+
 			self.updateStats();
-			self._buildBoard();
 		};
 
 		self.updateStats = function(){
@@ -134,18 +139,26 @@
 
 	    self.init = function() {
 	    	self.reset();
+	    	self._buildBoard();
 	    };
 	    
 	    self.init();
 
 		return self;
-	}
+	};
 
-	window.Game = new Game();
+	window.TicTacToe = window.TicTacToe || {};
+
+	TicTacToe.Game = new Game();
 
 })();
 
-
 $(document).ready(function() {
-	$("#board").on("click","td",Game.handleClick)
+	$("#board")
+		.on("click","td",TicTacToe.Game.handleClick)
+		.on("webkitTransitionEnd transitionend msTransitionEnd oTransitionEnd",function(e) {
+			if($(e.target).is(".resetting")) {
+				TicTacToe.Game._buildBoard();
+			}
+		});
 });

@@ -23,6 +23,10 @@ body {
   -ms-user-select:none;
   -o-user-select:none;
   user-select:none;
+  transition:transform .2s;
+}
+#board.resetting {
+	transform:scale(0);
 }
 
 #board td {
@@ -46,10 +50,10 @@ body {
 }
 
 .X {
-	color:red;
+	color:#12AB9A;
 }
 .O {
-	color:blue;
+	color:#FF9700;
 }
 
 .stats {
@@ -74,26 +78,9 @@ body {
 	font-size:14px;
 	width:33%;
 }
-/*.container {
-	text-align:center;
-	height:100%;
-}
-
-.container:before {
-	font-size:0;
-	content: '';
-	display: inline-block;
-	height: 100%;
-	vertical-align: middle;
-	margin-right: -0.25em;
-}*/
-/*
-.centered {
-	display: inline-block;
-	vertical-align: middle;
-}*/
 
 .container {
+	text-align:center;
 	position:absolute;
 	width:300px;
 	top:50%;
